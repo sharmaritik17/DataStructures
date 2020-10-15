@@ -23,7 +23,7 @@ public:
     }
 };
 ```
-```c
+```cpp
 int main() {
   int y = SOME_MACRO_REFERENCE;
   int x = 5 + 6;
