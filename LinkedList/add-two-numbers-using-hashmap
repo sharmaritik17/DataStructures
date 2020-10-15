@@ -1,3 +1,33 @@
+## 445 leetcode
+by using hashmap
+/* -----------------------------------------------------------------------*/
+class linkedlistExtended {
+public:
+	unordered_map<ListNode*, ListNode*> _prev;
+	ListNode *_tail=NULL;
+	linkedlistExtended(ListNode *head) const {
+		while (head != nul) {
+			_prev[head] = _tail;
+			_tail = head;
+			head = head->next;
+		}
+	}
+
+	ListNode get_prev(ListNode *curr) const {
+		return _prev[curr];
+	}
+
+	ListNode get_value(ListNode *curr) const {
+		return curr ? curr->val : 0;
+
+	}
+
+	ListNode get_tail(ListNode *curr) const {
+		return _tail;
+	}
+
+};
+
 class Solution {
 public:
 	ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
