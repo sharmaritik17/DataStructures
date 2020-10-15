@@ -1,0 +1,33 @@
+class Solution {
+public:
+	ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+		linkedlistExtended A(l1), B(l2);
+
+		ListNode *f = A.get_tail();
+		ListNode *s = B.get_tail();
+
+		int carry = 0;
+		int digit = 0;
+		ListNode *res = NULL;
+
+		while (f || s) {
+			digit  = A.get_value(f) + B.get_value(s) + carry;
+			carry = digit / 10;
+			digit = digit % 10;
+
+			ListNode *nextDigit = new ListNode(digit);
+			nextDigit->next = res;
+			res = nextDigit;
+
+			f = A.get_prev(f);
+			s = B.get_prev(s);
+		}
+
+		if (carry) {
+			ListNode *nextDigit = new ListNode(1);
+			nextDigit->next = res;
+			res = nextDigit;
+		}
+		return res;
+	}
+};
