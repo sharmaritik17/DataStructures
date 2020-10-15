@@ -1,0 +1,77 @@
+/* -----------------------------------------------------------------------*/  using hashmap O(n) TC/SC
+#include<unordered_map>
+class Solution {
+public:
+	Node* copyRandomList(Node* head) {
+		unordered_map<Node*, Node*> ump;
+		if (!head)
+			return head;
+
+		Node *temp = head;
+		//Node *newlist = NULL;
+		Node *newHead = NULL;
+		while (temp) {
+			Node *newlist = new Node(temp->val);
+			if (!newHead) {
+				newHead = newlist;
+			}
+			//ump.insert(temp, newlist);
+			ump[temp] = newlist;
+			temp = temp->next;
+		}
+
+		Node *curr = head;
+		while (curr) {
+			Node *save = ump[curr];
+			save->next = ump[curr->next];
+			save->random = ump[curr->random];
+
+			curr = curr->next;
+		}
+
+		return newHead;
+	}
+};
+/*-----------------------------------------------------------------------*/ O(n) Tc/ O(1)SC
+class Solution {
+public:
+	Node* copyRandomList(Node* head) {
+		if (!head)
+			return head;
+
+		Node *curr = head;
+		while (curr) {
+			Node *newNode = new Node(curr->val);
+			newNode->next = curr->next;
+			curr->next = newNode;
+
+			curr = newNode->next;
+		}
+
+		curr = head;
+		while (curr && curr->next) {
+			if (curr->random) {
+				curr->next->random = curr->random->next;
+			}
+			curr = curr->next->next;
+		}
+
+		Node *newHead = NULL;
+		Node *tail = NULL;
+		curr = head;
+		while (curr && curr->next) {
+			if (!newHead) {
+				newHead = curr->next;
+				tail = curr->next;
+			}
+			else {
+				tail->next = curr->next;
+				tail = curr->next;
+			}
+			curr->next = curr->next->next;
+
+			curr = curr->next;
+		}
+		return newHead;
+	}
+};
