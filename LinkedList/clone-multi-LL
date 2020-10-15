@@ -1,0 +1,36 @@
+//Flattening doubly linked list
+/*-----------------------------------------------------------------------*/
+class Solution {
+public:
+	Node* flatten(Node* head) {
+		if (!head)
+			return head;
+		Node *curr = head;
+		while (curr) {
+			//When node has not any child
+			if (curr->child == NULL) {
+				curr = curr->next;
+				continue;
+			}
+
+			//Here, we are finding tail of the below/child node
+			Node *tail = curr->child;
+			while (tail->next) {
+				tail = tail->next;
+			}
+			// Here, we are wiring up tail of the child level with next node in upper level
+			tail->next = curr->next;
+
+			//Here, we are putting tail in next node as for next node tail will be act as previous one
+			if (curr->next) {
+				curr->next->prev = tail;
+			}
+
+			//Ahh! Now coming to front connections
+			curr->next = curr->child;
+			curr->child->prev = curr;
+			curr->child = NULL;
+		}
+		return head;
+	}
+};
