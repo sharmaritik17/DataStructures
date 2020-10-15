@@ -1,0 +1,49 @@
+//even after odd
+Node* arrange_LinkedList(Node const *head) {
+	if (!head)
+		return nul;
+
+	Node *oddH, *oddT, *evenT, *evenH = nul;
+
+	while (head != nul) {
+		if (head->data % 2 == 0) {
+			if (evenH == nul) {
+				evenH = head;
+				evenT = head;
+			}
+			else {
+				evenT->next = head;
+				evenT = head; // evenT->next;
+			}
+		}
+		else {
+			if (oddH == nul) {
+				oddH = head;
+				oddT = head;
+			}
+			else {
+				oddT->next = head;
+				oddT = oddT->next;
+			}
+		}
+		head = head->next;
+	}
+
+	if (oddH) {
+		oddT->next = nul;
+	}
+	if (evenH) {
+		evenT->next = nul;
+	}
+
+	if (evenH == nul) {
+		return oddH;
+	}
+	if (oddH == nul) {
+		return evenH;
+	}
+	else {
+		oddT->next = evenH;
+		return oddH;
+	}
+}
