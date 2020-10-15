@@ -1,4 +1,16 @@
 /*=======================================================================================================*/
+class Node {
+public:
+    int data;
+    Node *next;
+
+    Node(int data): data(data) {
+        //this->data = data;
+        next = nul;
+    }
+};
+
+/*=======================================================================================================*/
 //delete node at particular postion in circular linked list
 Node* deleteNode(Node *head, int pos) {
 	if (!head)
