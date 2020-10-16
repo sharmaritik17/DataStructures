@@ -1,0 +1,43 @@
+https://leetcode.com/problems/min-stack/
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+class MinStack {
+public:
+    /** initialize your data structure here. */
+    stack<int> s;
+    stack<int> ss;
+//     MinStack() {
+
+//     }
+    
+    void push(int x) {
+        s.push(x);
+        
+        if(ss.empty() || x<=ss.top())
+            ss.push(x);
+        
+    }
+    
+    void pop() {
+        if(s.empty()){
+            return;
+        }
+        if(s.top()==ss.top()){
+            ss.pop();
+        }
+        s.pop();    
+    }
+    
+    int top() {
+       if(s.empty()){
+          return INT_MAX;
+      }  
+        return s.top();
+    }
+    
+    int getMin() {
+       if(s.empty() || ss.empty()){
+          return INT_MAX;
+      } 
+        return ss.top();
+    }
+};
