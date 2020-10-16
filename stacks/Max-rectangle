@@ -2,7 +2,7 @@ https://leetcode.com/problems/maximal-rectangle/
 ------------------------------------------------------------------------------
 class Solution {
 public:
- 	int getMaxArea(vector<int>&histogram) {
+ 	int largestArea(vector<int>&histogram) {
 		vector<int> left, right;
 		stack<int> s;
 
