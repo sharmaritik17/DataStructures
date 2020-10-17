@@ -1,3 +1,8 @@
+https://leetcode.com/problems/trapping-rain-water/
+https://leetcode.com/problems/trapping-rain-water/discuss/898462/Combine-all-solutions-with-TCSC-O(N)
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
 TC--O(N)
 SC--O(N)--two arrays
 Two iterations of an array
