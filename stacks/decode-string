@@ -1,0 +1,50 @@
+https://leetcode.com/problems/decode-string/
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+https://leetcode.com/problems/decode-string/discuss/900069/Iterative-approacheasy-buzzy
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+class Solution {
+public:
+	string decodeString(string s) {
+		if (!s.size())
+			return "";
+
+		stack<char> st;
+		string res = "";
+		for (int i = 0; s[i] != '\0'; i++) {
+			if (s[i] != ']') {
+				st.push(s[i]);
+			}
+			else {
+				string curr = "";
+				while (st.top() != '[') {
+					curr = st.top() + curr;
+					st.pop();
+				}
+
+				st.pop();
+
+				string number = "";
+				while (!st.empty() && isdigit(st.top())) {
+					number = st.top() + number;
+					st.pop();
+				}
+
+				int num = stoi(number);
+
+				while (num--) { // must to put into the stack again
+					for(int i=0;curr[i]!='\0';i++){
+						st.push(curr[i]);
+					}
+				}
+			}
+		}
+
+		while(!st.empty()){
+			res = st.top() + res;
+			st.pop();
+		}
+		return res;
+	}
+};
