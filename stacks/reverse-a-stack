@@ -1,0 +1,71 @@
+#include <stack>
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+--------------------------------------------------------------------------------only recursion----------------------------------------------------------------------------------
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+void setStack(stack<int> &input,int data){
+    if(input.empty()){
+        input.push(data);
+        return;
+    }
+    
+    int top_element = input.top();
+    input.pop();
+    setStack(input,data);
+    input.push(top_element);
+}
+void reverseStack(stack<int> &input, stack<int> &extra) {
+    //one stack only
+    if(input.empty())
+        return;
+    
+    int top_element = input.top();
+    input.pop();
+    reverseStack(input,extra);
+    setStack(input,top_element);
+}
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+--------------------------------------------------------------------------------two stack + recursion---------------------------------------------------------------------------
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+void reverseStack(stack<int> &input, stack<int> &extra) {
+     if(input.empty())
+         return;
+    
+     int top_element = input.top();
+     input.pop();
+    reverseStack(input,extra);
+    
+    while(!input.empty()){
+        extra.push(input.top());
+         input.pop();
+     }
+    
+     input.push(top_element);
+    
+     while(!extra.empty()){
+         input.push(extra.top());
+         extra.pop();
+      }
+}
+
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+#include <iostream>
+#include <stack>
+using namespace std;
+
+int main() {
+    stack<int> input, extra;
+    int size;
+    cin >> size;
+
+    for (int i = 0, val; i < size; i++) {
+        cin >> val;
+        input.push(val);
+    }
+
+    reverseStack(input, extra);
+
+    while (!input.empty()) {
+        cout << input.top() << " ";
+        input.pop();
+    }
+}
