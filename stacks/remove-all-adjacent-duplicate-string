@@ -1,6 +1,7 @@
 https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/
 /*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
-
+my solution----- https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/discuss/902741/Unique-approach-easy-buzzy-faster-than-98.87-online-submissions
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
 class Solution {
 public:
 string removeDuplicates(string s) {
@@ -40,3 +41,30 @@ string removeDuplicates(string s) {
 	}
 	return res;
 }
+---------------------------------------------------------my solution---------------------------------------------------------------------------------
+class Solution {
+public:
+	string removeDuplicates(string s) {
+		if (s.empty())
+			return "";
+
+		int n = s.length();
+		int ptr = -1;
+        int  i = 0;
+		while (i < n) {
+			if (ptr == -1 || s[ptr] != s[i]) {
+				ptr++;
+				s[ptr] = s[i];
+				i++;
+			}
+			else {
+				while (i < n && ptr>-1 && s[ptr] == s[i]) {
+					ptr--;
+					i++;
+				}
+			}
+		}
+
+		return s.substr(0,ptr+1);
+	}
+};
