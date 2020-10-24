@@ -1,0 +1,85 @@
+https://practice.geeksforgeeks.org/problems/count-the-reversals/0#
+
+
+
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/ with stack O(N) space
+int countBracketReversals(string input) {
+    // Write your code here
+    //int count=0;
+    int len = input.length();
+
+    if (len % 2)
+        return -1;
+
+    for (auto it : input) {
+        if (!st.empty() && st.top() == '{' && it == '}') {
+            st.pop();
+        }
+        else {
+            st.push(it);
+        }
+    }
+
+    int count = 0;
+    while (!st.empty()) {
+        char top1 = st.top();
+        st.pop();
+        char top2 = st.top();
+        st.pop();
+
+
+        if (top1 == top2) {
+            count++;
+        }
+        else {
+            count += 2;
+        }
+    }
+
+    return count;
+}
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/  With O(1) space
+
+https://ide.geeksforgeeks.org/Hqv2TvjAYf
+
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4*/must see
+#include <iostream>
+using namespace std;
+
+int main() {
+	//code
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    string s;
+	    cin>>s;
+	    int q=s.size();
+	    if(q%2==1)
+	    cout<<-1;
+	    else
+	    {
+	        int l=0,c=0;
+	        for(int i=0;i<q;i++)
+	        {
+	            if(s[i]=='{')
+	            l++;
+	            
+	            if(s[i]=='}')
+	            l--;
+	            
+	            if(l<0)
+	            {
+	                l=1;
+	                c++;
+	            }
+	            
+	        }
+	        c=c+l/2;
+	        cout<<c;
+	    }
+	    cout<<endl;
+	}
+	return 0;
+}
+
