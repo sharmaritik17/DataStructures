@@ -1,9 +1,10 @@
 // stack by using linked list
 template<typename T>
 class Node {
+public:
     T data;
     Node <T> *next;
-public:
+
     Node(T data) {
         this->data = data;
         next = NULL;
@@ -44,11 +45,11 @@ public:
             return 0;
         Node<T> *remove = NULL;
         remove = head;
-        T save = head->data;
+        T save_data = head->data;
         head = head->next;
         delete(remove);
         size--;
-        return save;
+        return save_data;
     }
 
     T top() {
