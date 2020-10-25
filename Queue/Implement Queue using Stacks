@@ -1,6 +1,6 @@
 https://leetcode.com/problems/implement-queue-using-stacks/
 
-/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/armotised complexity would be O(1)-- TC/SC
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/amortized complexity would be O(1)-- TC/SC
 class MyQueue {
 public:
     int front_ele = 0;
