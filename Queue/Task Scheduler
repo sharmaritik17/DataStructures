@@ -1,0 +1,70 @@
+https://leetcode.com/problems/task-scheduler/
+
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/in O(1) space
+
+class Solution {
+public:
+    int leastInterval(vector<char>& tasks, int n) {
+        vector<int> count(26, 0);
+        int tasks_size = tasks.size();
+        int max_freq = 0;
+        for (auto &it : tasks) {
+            count[it - 65]++;
+            max_freq = max(max_freq, count[it - 65]);
+        }
+
+        int result = (max_freq - 1) * (n+1);
+        for (auto &it : count) {
+            if (max_freq == it) {
+                result++;
+            }
+        }
+
+        return max(result, tasks_size);
+    }
+};
+
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/not optimised
+
+class Solution {
+public:
+    int leastInterval(vector<char>& tasks, int n) {
+        unordered_map<char, int> count;
+        for (auto &it : tasks) {
+            count[it]++;
+        }
+
+        // priority queue----max-heap
+        priority_queue<int> pq;
+        for (auto &it : count) {
+            pq.push(it.second);
+        }
+
+        // now push-pop in pq to find priotrizing of all tasks
+        int result = 0;
+        while (!pq.empty()) {
+            int time = 0;
+            vector<int> vec;
+
+            for (int i = 0; i < n + 1; i++) {
+                if (!pq.empty()) {
+                    vec.push_back(pq.top() - 1);
+                    pq.pop();
+                    time++;
+                }
+            }
+
+            // poping from vec and now pushing into priority queue
+            for (auto &it : vec){ 
+                if (it) {
+                    pq.push(it);
+                }
+            }
+               result += pq.empty() ? time : n+1;
+            
+                     
+        }
+
+        return result;
+    }
+};
