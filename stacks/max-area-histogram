@@ -77,3 +77,43 @@ int main(){
 
 	return 0;
 }
+
+
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/  must check
+https://leetcode.com/problems/largest-rectangle-in-histogram/
+
+
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/ monotonically stack
+class Solution {
+public:
+    int largestRectangleArea(vector<int>& heights) {
+
+        stack<int> st;
+        int n = heights.size();
+        int max_area = 0;
+
+        if (!n)
+            return 0;
+
+        // to wrap up arear for last element in height array
+        heights.push_back(0);
+
+
+        for (int i = 0; i < heights.size();; i++) {
+
+            while (!st.empty() && heights[st.top()] > heights[i]) {
+                int top_element = heights[st.top()];
+                st.pop();
+
+                // take an example with code since it's zero based indexing
+                int ran = st.empty() ? -1 : st.top(); // in case we reached at the end of histogram
+                int width = i - ran - 1;
+                max_area = max(max_area, (top_element * width));
+            }
+
+            st.push(i);
+        }
+
+        return max_area;
+    }
+};
