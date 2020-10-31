@@ -1,0 +1,127 @@
+#include  <bits/stdc++.h>
+#define MAX 1000
+#define mod     1000000009
+#define FIO     ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0)
+#define nul     NULL
+#define hell    INT_MIN
+#define hevn    INT_MAX
+#define ll     long long
+#define  z "\n"
+#include <iostream>
+#include <vector>
+#include <climits>
+#define ff first
+#define ss second
+using namespace std;
+#include "ComplexNumbers.h"
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+TreeNode<int>* takeinputLevelWise() {
+	int root_data;
+	cout << "Enter root data";
+	cin >> root_data;
+
+	TreeNode<int> *root = new TreeNode<int>(root_data);
+
+	queue<TreeNode<int>*> pendingNodes;
+	pendingNodes.push(root);
+
+	while (!pendingNodes.empty()) {
+		TreeNode<int> * front = pendingNodes.front();
+		pendingNodes.pop();
+
+		int childSize;
+		cout << "Enter child size";
+		cin >> childSize;
+
+		for (int i = 0; i < childSize; i++) {
+			int child_data;
+			cout << "Enter data of " << i << "th child-- parent" << front->data;
+			cin >> child_data;
+
+			TreeNode<int>* child_node = new TreeNode<int>(child_data);
+			front->children.push_back(child_node);
+			pendingNodes.push(child_node);
+		}
+
+	}
+	return root;
+}
+
+void printTreeLevelWise(TreeNode<int>* root) {
+	if (!root)
+		return;
+
+	queue<TreeNode<int>*> pendingNodes;
+	pendingNodes.push(root);
+
+	while (!pendingNodes.empty()) {
+		TreeNode<int> *front = pendingNodes.front();
+		pendingNodes.pop();
+
+		cout << front->data << ":";
+
+		for (int i = 0; i < front->children.size(); i++) {
+
+			cout << front->children[i]->data;
+			pendingNodes.push(front->children[i]);
+
+			if (i != front->children.size() - 1) {
+				cout << ",";
+			}
+
+		}
+
+		cout << endl;
+	}
+
+}
+
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+int main() {
+	/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+#ifndef ONLINE_JUDGE
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
+#endif
+	/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+	/*
+	TreeNode<int> *root1 = new TreeNode<int>(1);
+	TreeNode<int> *node1 = new TreeNode<int>(2);
+	TreeNode<int> *node2 = new TreeNode<int>(3869);
+
+	//let them connect
+	root1->children.push_back(node1);
+	root1->children.push_back(node2);
+	printTree(root1);
+	*/
+	TreeNode<int> *root = takeinputLevelWise();
+	printTreeLevelWise(root);
+
+	/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+	return 0;
+}
+
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+template<typename T>
+class TreeNode {
+public:
+    T data;
+    vector<TreeNode<T>*> children;
+
+    TreeNode(T data) : data(data) {
+        // this->data = data;
+    }
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
