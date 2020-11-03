@@ -1,0 +1,57 @@
+Given a binary tree having N nodes and an integer M, you have to return the postorder successor of M.
+Return -1 if there is no postorder successor of M.
+
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+//pls paste it into sublime ot any editor for proper readability
+
+Node *leftmostLEAFnotNODE(Node *root)
+{
+    while (root->left || root->right)
+    {
+        if(root->left) root=root->left;
+        else root=root->right;
+    }
+
+    return root;
+}
+Node *postorderSuccessorRec(Node *root, int key,Node *direct_parent, Node *parent,Node * treeroot)
+{
+    //Case 1: If current root is NULL, then succ(current root) is NULL.
+    if (root==NULL)
+        return 0;
+    //Case 2: If current root is target node for which we are looking for successor.
+    if (root->data == key)
+    {
+        //Case 2.1: If current root is the root of the tree, succ(current root) is undefined.
+        if(root == treeroot)
+            return NULL;
+        //Case 2.2: Otherwise, if current root is a right child, succ(current root) is parent(current root).
+        else if(direct_parent != NULL && direct_parent->right==root)
+            return direct_parent;
+        //Case 2.3: Otherwise current root is a left child and the following applies:
+
+        //Case 2.3.1: If u has a right sibling, r, succ(current root) is the leftmost leaf in r's sub-tree
+        else if(direct_parent != NULL && direct_parent->left==root && direct_parent->right!=NULL)
+            return leftmostLEAFnotNODE(direct_parent->right);
+        //Case 2.3.2: Otherwise succ(current root) is parent(current root).
+        else if(direct_parent != NULL && direct_parent->left==root && direct_parent->right==NULL)
+            return direct_parent;
+        //Case 2.3.3: If none of above applies, then succ(current root) doesn't exist.
+        else
+            return NULL;
+    }
+    //Case 3: Current root is not the target node for which we are looking successor.
+    else
+    {
+        //Case 3.1: Search target node and its successor in left side of tree recursively, and return if found.
+        Node *left=postorderSuccessorRec(root->left,key,root,root,treeroot);
+        if (left)
+            return left;
+        //Case 3.2: Search target node and its successor in right side of tree recursively, and return.
+        return postorderSuccessorRec(root->right,key,root,parent,treeroot);
+    }
+}
+Node *postorderSuccessor(Node *root, int key)
+{
+    return postorderSuccessorRec(root,key,NULL,NULL,root);
+}
