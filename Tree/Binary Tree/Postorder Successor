@@ -14,7 +14,7 @@ Node *leftmostLEAFnotNODE(Node *root)
 
     return root;
 }
-Node *postorderSuccessorRec(Node *root, int key,Node *direct_parent, Node *parent,Node * treeroot)
+Node *postorderSuccessorRec(Node *root, int key,Node *direct_parent,Node * treeroot)
 {
     //Case 1: If current root is NULL, then succ(current root) is NULL.
     if (root==NULL)
@@ -44,14 +44,14 @@ Node *postorderSuccessorRec(Node *root, int key,Node *direct_parent, Node *paren
     else
     {
         //Case 3.1: Search target node and its successor in left side of tree recursively, and return if found.
-        Node *left=postorderSuccessorRec(root->left,key,root,root,treeroot);
+        Node *left=postorderSuccessorRec(root->left,key,root,treeroot);
         if (left)
             return left;
         //Case 3.2: Search target node and its successor in right side of tree recursively, and return.
-        return postorderSuccessorRec(root->right,key,root,parent,treeroot);
+        return postorderSuccessorRec(root->right,key,root,treeroot);
     }
 }
 Node *postorderSuccessor(Node *root, int key)
 {
-    return postorderSuccessorRec(root,key,NULL,NULL,root);
+    return postorderSuccessorRec(root,key,NULL,root);
 }
