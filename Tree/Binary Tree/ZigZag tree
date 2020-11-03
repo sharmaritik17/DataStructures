@@ -1,0 +1,124 @@
+Given a binary tree, print the zig zag order i.e print level 1 from left to right, level 2 from right to left and so on. 
+This means odd levels should get printed from left to right and even level right to left.
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+
+
+// using two stacks--------------------------------------------------------------------------------------------------
+void zigZagOrder(BinaryTreeNode<int> *root) {
+	if(!root)
+		return;
+
+	stack<BinaryTreeNode<int>*> lr;
+    stack<BinaryTreeNode<int>*> rl;
+	rl.push(root);
+	while(!lr.empty() || !rl.empty()){
+		while(!rl.empty()){
+			BinaryTreeNode<int> *frontp = rl.top();
+			rl.pop();
+			cout<<frontp->data<<" ";
+
+			if(frontp->left)
+				lr.push(frontp->left);
+			if(frontp->right)
+				lr.push(frontp->right);
+		}
+
+		cout<<endl;
+
+		while(!lr.empty()){
+			BinaryTreeNode<int> *frontp = lr.top();
+			lr.pop();
+			cout<<frontp->data<<" ";
+
+			if(frontp->right)
+				rl.push(frontp->right);
+			if(frontp->left)
+				rl.push(frontp->left);
+		}	
+        cout<<endl;
+	}
+} 
+
+//one stack one queue------------------------------------------------------------------------------------------------------
+void zigZagOrder(BinaryTreeNode<int> *root) {
+
+	if (root == NULL)
+		return;
+
+	stack<int> s;
+	queue<BinaryTreeNode<int> *> q;
+
+	bool reverse = false;
+	q.push(root);
+	while (!q.empty()) {
+
+		int size = q.size();
+		while (size) {
+			BinaryTreeNode<int> * p = q.front();
+			q.pop();
+
+			if (reverse)
+				s.push(p->data);
+			else
+				cout << p->data << " ";
+
+			if (p->left)
+				q.push(p->left);
+			if (p->right)
+				q.push(p->right);
+			size--;
+		}
+
+		if (reverse) {
+			while (!s.empty()) {
+				cout << s.top() << " ";
+				s.pop();
+			}
+		}
+
+		reverse = !reverse;
+		cout << endl;
+	}
+} 
+
+//dequeue------------------------------------------------------------------------------------------------------
+void zigZagOrder(BinaryTreeNode<int> *root) {
+
+	if (root == NULL)
+	{
+		return;
+	}
+	deque<BinaryTreeNode<int>*>d;
+	d.push_back(root);
+	while (!d.empty()) {
+		int size = d.size();
+		while (size--) {
+			BinaryTreeNode<int> *curr = d.front();
+			d.pop_front();
+			cout << curr->data << " ";
+			if (curr->left) {
+				d.push_back(curr->left);
+			}
+
+			if (curr->right) {
+				d.push_back(curr->right);
+			}
+		}
+        cout << endl;
+        size = d.size();
+		while (size--) {
+			BinaryTreeNode<int> *curr = d.back();
+			d.pop_back();
+			cout << curr->data << " ";
+			if (curr->right) {
+				d.push_front(curr->right);
+			}
+
+			if (curr->left) {
+				d.push_front(curr->left);
+			}
+
+		}
+		cout << endl;
+	}
+} 
