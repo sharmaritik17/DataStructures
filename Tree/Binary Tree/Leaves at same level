@@ -1,0 +1,29 @@
+https://www.geeksforgeeks.org/check-leaves-level/
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+
+bool checkLeaves_helper(BinaryTreeNode<int>* root, int leave_level, int &comp_level) {
+	if (!root)
+		return true;
+
+	if (!root->left && !root->right) {
+		if (comp_level == 0) {
+			comp_level = leave_level;
+			return true;
+		}
+		return (leave_level == comp_level);
+	}
+
+	return (checkLeaves_helper(root->left, leave_level + 1, comp_level) &&
+	        checkLeaves_helper(root->right, leave_level + 1, comp_level));
+}
+void checkLeaves(BinaryTreeNode<int>* root) {
+	/* Don't write main().
+	 * Don't read input, is is passed as function argument.
+	 */
+    int comp_level=0;
+	if (checkLeaves_helper(root, 0, comp_level))
+		cout << "YES";
+	else
+		cout << "NO";
+
+}
