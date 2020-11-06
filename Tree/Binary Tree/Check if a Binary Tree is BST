@@ -1,0 +1,58 @@
+#define maximum first.first
+#define minimum first.second
+#define bst second
+pair<pair<int, int>, bool> isBST_helper(BinaryTreeNode<int>* root) {
+	if (!root) {
+		pair<pair<int, int>, bool> res;
+		res.maximum = INT_MIN;
+		res.minimum = INT_MAX;
+		res.bst = true;
+		return res;
+	}
+
+	pair<pair<int, int>, bool> left_output = isBST_helper(root->left);
+	pair<pair<int, int>, bool> right_output = isBST_helper(root->right);
+	int minimum_save = min(root->data, min(left_output.minimum, right_output.minimum));
+	int maximum_save = max(root->data, max(left_output.maximum, right_output.maximum));
+	bool bst_save = (root->data > left_output.maximum) && (root->data <= right_output.minimum) &&
+	                left_output.bst && right_output.bst;
+
+	pair<pair<int, int>, bool> output;
+	output.minimum = minimum_save;
+	output.maximum = maximum_save;
+	output.bst = bst_save;
+
+	return output;
+}
+bool isBST(BinaryTreeNode<int> *root) {
+	if (!root)
+		return true;
+
+	return isBST_helper(root).bst;
+}
+
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+
+#include<climits> 
+bool isBST1(BinaryTreeNode<int> *root,int min, int max){
+      if(root==NULL){
+        return true;}
+    
+    if(root->data < min || root->data > max ){
+        return false;
+    }
+    
+    bool isLeftOk = isBST1(root->left, min, root->data-1);
+    bool isRightOk = isBST1(root->right, root->data, max);
+    
+    return (isLeftOk && isRightOk);
+}  
+bool isBST(BinaryTreeNode<int> *root){
+       /* Don't write main().
+	* Don't read input, it is passed as function argument.
+	* Return output and don't print it.
+	* Taking input and printing output is handled automatically.
+	*/    
+  return (isBST1(root,INT_MIN,INT_MAX)); 
+}
+
