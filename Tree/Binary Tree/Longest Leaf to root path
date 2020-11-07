@@ -1,0 +1,41 @@
+Given a binary tree, return the longest path from leaf to root. Longest means, a path which contain maximum number of nodes from leaf to root.
+
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+vector<int>* longestPath(BinaryTreeNode<int>* root) {
+	
+  if (!root)
+		return {};
+
+	if (!root->left && !root->right) {
+		vector<int>* output = new vector<int>();
+		output->push_back(root->data);
+		return output;
+	}
+
+	vector<int>* left_result = longestPath(root->left);
+	vector<int>* right_result = longestPath(root->right);
+
+	if (!left_result) {
+		right_result->push_back(root->data);
+		return right_result;
+	}
+
+	else if (!right_result) {
+		left_result->push_back(root->data);
+		return left_result;
+	}
+
+	else {
+		if (left_result->size() < right_result->size()) {
+			right_result->push_back(root->data);
+			delete left_result;
+			return right_result;
+		}
+
+		else {
+			left_result->push_back(root->data);
+			delete right_result;
+			return left_result;
+		}
+	}
+}
