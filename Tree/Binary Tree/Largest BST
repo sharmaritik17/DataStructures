@@ -1,0 +1,43 @@
+#define minimum first.first
+#define maximum first.second
+#define height second.first
+#define isBST  second.second
+#define getpair pair<pair<int,int>,pair<int,bool>>
+
+getpair largestBSTSubtree_helper(BinaryTreeNode<int> *root) {
+	if (!root) {
+		getpair res;
+		res.minimum = INT_MAX;
+		res.maximum = INT_MIN;
+		res.isBST = true;
+		res.height = 0;
+		return res;
+	}
+
+	getpair left_output = largestBSTSubtree_helper(root->left);
+	getpair right_output = largestBSTSubtree_helper(root->right);
+
+	int final_minmum = min(root->data, min(left_output.minimum, right_output.minimum));
+	int final_maximum = max(root->data, max(left_output.maximum, right_output.maximum));
+	bool final_isBST = left_output.isBST && right_output.isBST &&
+	                   root->data > left_output.maximum && root->data <= right_output.minimum;
+	int final_height = 0;
+	if (final_isBST) {
+		final_height = 1 + max(left_output.height, right_output.height);
+	}
+	else {
+		final_height = max(left_output.height, right_output.height);
+	}
+
+
+	getpair output;
+	output.minimum = final_minmum;
+	output.maximum = final_maximum;
+	output.height = final_height;
+	output.isBST = final_isBST;
+
+	return output;
+}
+int largestBSTSubtree(BinaryTreeNode<int> *root) {
+	return largestBSTSubtree_helper(root).height;
+}
