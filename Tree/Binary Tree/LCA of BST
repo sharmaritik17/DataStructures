@@ -1,0 +1,32 @@
+BinaryTreeNode<int>* lcaInBST_helper(BinaryTreeNode<int>* root , int val1 , int val2) {
+	if (!root)
+		return root;
+
+	if (root->data == val1 || root->data == val2)
+		return root;
+
+	if (root->data > val1 && root->data > val2)
+		return lcaInBST_helper(root->left, val1, val2);
+
+	else if (root->data < val1 && root->data < val2)
+		return lcaInBST_helper(root->right, val1, val2);
+
+
+	BinaryTreeNode<int> *left_output = lcaInBST_helper(root->left, val1, val2);
+	BinaryTreeNode<int> *right_output = lcaInBST_helper(root->right, val1, val2);
+
+
+	if (left_output && right_output)
+		return root;
+	if (left_output)
+		return left_output;
+	if (right_output)
+		return right_output;
+}
+
+int getLCA(BinaryTreeNode<int>* root , int val1 , int val2) {
+	if (!root)
+		return -1;
+
+	return lcaInBST_helper(root, val1, val2) == NULL ? -1 : lcaInBST_helper(root, val1, val2)->data;
+}
