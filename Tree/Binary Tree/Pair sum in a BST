@@ -1,0 +1,89 @@
+int countNodes(BinaryTreeNode<int>* root) {
+	if (!root)
+		return 0;
+
+	return 1 + countNodes(root->left) + countNodes(root->right);
+}
+void printNodesSumToS(BinaryTreeNode<int> *root, int sum) {
+	if (!root)
+		return;
+
+	int total_count = countNodes(root);
+	int count = 0;
+
+	stack<BinaryTreeNode<int>*> left_stack, right_stack;
+
+	BinaryTreeNode<int>* curr = root;
+
+	while (curr) {
+		left_stack.push(curr);
+		curr = curr->left;
+	}
+
+	curr = root;
+
+	while (curr) {
+		right_stack.push(curr);
+		curr = curr->right;
+	}
+
+	while (count < total_count - 1) {
+		BinaryTreeNode<int>* top_left = left_stack.top();
+		BinaryTreeNode<int>* top_right = right_stack.top();
+
+		if (top_left->data + top_right->data > sum) {
+			right_stack.pop();
+			count++;
+
+			if (top_right->left) {
+				BinaryTreeNode<int> *let = top_right->left;
+				while (let) {
+					right_stack.push(let);
+					let = let->right;
+				}
+			}
+
+		}
+
+		else if (top_left->data + top_right->data < sum) {
+			left_stack.pop();
+			count++;
+
+			if (top_left->right) {
+				BinaryTreeNode<int> *let = top_left->right;
+				while (let) {
+					left_stack.push(let);
+					let = let->left;
+				}
+			}
+
+		}
+
+		else {
+			cout << top_left->data << " " << top_right->data << endl;
+
+			left_stack.pop();
+			count++;
+
+			if (top_left->right) {
+				BinaryTreeNode<int> *let = top_left->right;
+				while (let) {
+					left_stack.push(let);
+					let = let->left;
+				}
+			}
+
+			right_stack.pop();
+			count++;
+
+			if (top_right->left) {
+				BinaryTreeNode<int> *let = top_right->left;
+				while (let) {
+					right_stack.push(let);
+					let = let->right;
+				}
+			}
+
+		}
+	}
+}
