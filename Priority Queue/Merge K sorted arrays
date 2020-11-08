@@ -1,0 +1,39 @@
+//witthtime complexity  O(n*k*log(k))
+//and space complexity  O(k))
+
+#define getpair pair<int,pair<int,int>>
+#define rowIndex second.first
+#define positionIndex second.second
+#define data first
+
+vector<int> mergeKSortedArrays(vector<vector<int>*> input) {
+	priority_queue<getpair, vector<getpair>, greater<getpair>> pq;
+
+	for (int i = 0; i < input.size(); i++) {
+		getpair res;
+		res.rowIndex = i;
+		res.positionIndex = 0;
+		res.data = input[i]->at(0);
+
+		pq.push(res);
+	}
+
+	vector<int> output;
+
+	while (!pq.empty()) {
+		getpair top = pq.top();
+		pq.pop();
+
+		output.push_back(top.data);
+
+		if ((top.positionIndex + 1) < input[top.rowIndex]->size()) {
+			getpair temp;
+			temp.data = input[top.rowIndex]->at(top.positionIndex + 1);
+			temp.rowIndex = top.rowIndex;
+			temp.positionIndex = top.positionIndex + 1;
+
+			pq.push(temp);
+		}
+	}
+	return output;
+}    
