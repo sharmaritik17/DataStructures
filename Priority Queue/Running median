@@ -6,11 +6,9 @@ void findMedian(int arr[], int n) {
 	priority_queue<int> maxHeap;
 	priority_queue<int, vector<int>, greater<int>> minHeap;
 
-	maxHeap.push(arr[0]);
+	for (int i = 0; i < n; i++) {
 
-	for (int i = 1; i < n; i++) {
-
-		if (maxHeap.top() > arr[i])
+		if (i == 0 || maxHeap.top() > arr[i])
 			maxHeap.push(arr[i]);
 		else
 			minHeap.push(arr[i]);
@@ -33,9 +31,9 @@ void findMedian(int arr[], int n) {
 			cout << minHeap.top() << endl;
 		}
 		else {
-			int _maxHeap = maxHeap.empty() ? 0: maxHeap.top();
-			int _minHeap = minHeap.empty() ? 0: minHeap.top();
-			
+			int _maxHeap = maxHeap.empty() ? 0 : maxHeap.top();
+			int _minHeap = minHeap.empty() ? 0 : minHeap.top();
+
 			int save = (_maxHeap + _minHeap) / 2;
 			cout << save << endl;
 		}
