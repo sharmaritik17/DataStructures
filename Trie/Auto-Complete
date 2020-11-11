@@ -1,0 +1,141 @@
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+
+int main() {
+	Trie t;
+	int n;
+	cin >> n;
+
+	vector<string> vect;
+
+	for (int i = 0; i < n; ++i) {
+		string word;
+		cin >> word;
+		vect.push_back(word);
+	}
+
+	string pattern;
+	cin >> pattern;
+
+	t.autoComplete(vect, pattern);
+}
+
+
+// #include "TrieNode.h"
+#include <string>
+#include <vector>
+class TrieNode {
+public :
+	char data;
+	TrieNode **children;
+	bool isTerminal;
+
+	TrieNode(char data) {
+		this -> data = data;
+		children = new TrieNode*[26];
+		for (int i = 0; i < 26; i++) {
+			children[i] = NULL;
+		}
+		isTerminal = false;
+	}
+};
+
+class Trie {
+	TrieNode *root;
+
+public :
+	int count;
+
+	Trie() {
+		this->count = 0;
+		root = new TrieNode('\0');
+	}
+
+	bool insertWord(TrieNode *root, string word) {
+		// Base case
+		if (word.size() == 0) {
+			if (!root->isTerminal) {
+				root -> isTerminal = true;
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		// Small Calculation
+		int index = word[0] - 'a';
+		TrieNode *child;
+		if (root -> children[index] != NULL) {
+			child = root -> children[index];
+		}
+		else {
+			child = new TrieNode(word[0]);
+			root -> children[index] = child;
+		}
+
+		// Recursive call
+		return insertWord(child, word.substr(1));
+	}
+
+	// For user
+	void insertWord(string word) {
+		if (insertWord(root, word)) {
+			this->count++;
+		}
+	}
+	void allPossibleWords(TrieNode *root, string word, vector<string> &output) {
+		if (!root)
+			return;
+		if (root->isTerminal) {
+			for (int i = 0; i < output.size(); i++) {
+				string final_word = word + output[i];
+				cout << final_word << endl;
+			}
+		}
+
+
+	}
+	void printWord(TrieNode *root, string hint) {
+		if (!root)
+			return;
+
+		if (root->isTerminal)
+			cout << hint << endl;
+
+
+		for (int i = 0; i < 26; i++) {
+			if (root->children[i]) {
+				printWord(root->children[i], hint + root->children[i]->data);
+			}
+		}
+
+	}
+
+	bool autoCompleteHelper(TrieNode *root, string word, string hint) {
+		if (word.size() == 0) {
+			printWord(root, hint);
+			return root->isTerminal;
+		}
+
+		int index = word[0] - 'a';
+		if (!root->children[index])
+			return false;
+
+		return autoCompleteHelper(root->children[index], word.substr(1), hint);
+	}
+
+	void autoComplete(vector<string> input, string pattern) {
+		if (!input.size())
+			return;
+
+		for (int i = 0; i < input.size(); i++) {
+			insertWord(input[i]);
+		}
+
+		autoCompleteHelper(root, pattern, pattern);
+
+	}
+};
