@@ -1,3 +1,4 @@
+``` cpp
 Given an array with N elements, you need to find the length of the longest subsequence in the given array such that all elements of the subsequence are sorted in strictly increasing order.
 Input Format
 The first line of input contains an integer N. The following line contains N space separated integers, that denote the value of elements of array.
@@ -75,3 +76,4 @@ int longestIncreasingSubsequence(int arr[], int n) {
 
 	return res.size();
 }
+```
