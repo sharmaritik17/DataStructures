@@ -1,3 +1,4 @@
+``` cpp
 Given two strings s and t of lengths m and n respectively, find the Edit Distance between the strings.
 Edit Distance of two strings is minimum number of steps required to make one string equal to other. 
 In order to do so you can perform following three operations only :
@@ -105,3 +106,4 @@ int editDistance(string s, string t) {
 }
 
 
+```
