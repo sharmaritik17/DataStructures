@@ -38,7 +38,7 @@ int maxRectangle(int **mat, int row, int col) {
     }
     return ans;
 }
-```
+
 
 
 int main() {
@@ -68,5 +68,5 @@ int main() {
     }
     return 0;
 }
-
+```
 
