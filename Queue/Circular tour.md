@@ -1,6 +1,7 @@
 https://practice.geeksforgeeks.org/problems/circular-tour/1#
 
 /*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+``` cpp
 int tour(petrolPump p[], int n)
 {
     //Your code her
@@ -18,3 +19,4 @@ int tour(petrolPump p[], int n)
 
     return (broken_capacity + capacity > 0) ? start : -1;
 }
+```
