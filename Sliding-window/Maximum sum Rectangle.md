@@ -2,6 +2,7 @@ https://practice.geeksforgeeks.org/problems/maximum-sum-rectangle/0#
 
 
 /*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+``` cpp
 #include <iostream>
 #include  <bits/stdc++.h>
 using namespace std;
@@ -37,6 +38,7 @@ int maxRectangle(int **mat, int row, int col) {
     }
     return ans;
 }
+```
 
 
 int main() {
