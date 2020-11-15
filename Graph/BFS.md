@@ -1,3 +1,4 @@
+``` cpp
 #include  <bits/stdc++.h>
 #define nul     NULL
 #define hell    INT_MIN
@@ -76,4 +77,4 @@ int main() {
 
 	delete []edges;
 }
-
+```
