@@ -1,10 +1,10 @@
 ``` cpp
-// https://www.programiz.com/cpp-programming/virtual-functions
+https://www.programiz.com/cpp-programming/virtual-functions
 
 
 
                                                                    /* ----------------IMPORTANT---------------- */
-                                // shorturl.at/sAEU7
+                                 shorturl.at/sAEU7
 
 
 /*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
