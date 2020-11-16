@@ -41,7 +41,7 @@ int upperBound(vector<int> &arr, int x) {
 			end = mid;
 		}
 	}
-	return start;
-}
+	return start==0 ? 0 : start-1;
+} 
 
 ```
