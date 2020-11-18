@@ -1,6 +1,42 @@
 ``` cpp
 // https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/
 
+// efiicient TC O(N) SC O(1)
+class Solution {
+public:
+	int minOperations(vector<int> &nums, int x) {
+		if (!nums.size())
+			return -1;
+
+		int sum = accumulate(nums.begin(), nums.end(), 0) - x;
+
+		if (sum < 0)
+			return -1;
+
+		if (sum == 0)
+			return nums.size();
+
+		int curr = 0;
+		int start = 0;
+		int res = INT_MIN;
+
+		for (int end = 0; end < nums.size(); end++) {
+			if (curr < sum)
+				curr += nums[end];
+
+			while (curr >= sum) {
+				if (curr == sum) {
+					res = max(res, end - start + 1);
+				}
+				curr -= nums[start++];
+			}
+		}
+
+		return res != INT_MIN ? nums.size() - res : -1;
+	}
+};
+ 
+ // TC O(N) SC O(N)
 class Solution {
 public:
 	int minOperations(vector<int>& nums, int x) {
