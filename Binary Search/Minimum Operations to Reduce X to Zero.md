@@ -1,6 +1,8 @@
 ``` cpp
 // https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/
 
+// https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/discuss/940444/faster-than-98.80-of-C%2B%2B-easy-buzzy-Sliding-Window
+
 // efiicient TC O(N) SC O(1)
 class Solution {
 public:
