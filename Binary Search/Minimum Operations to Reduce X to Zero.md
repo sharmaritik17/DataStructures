@@ -12,7 +12,7 @@ public:
 			return nums.size();
 
 		unordered_map<int, int>map;
-         map[0]=-1;
+                 map[0]=-1;
         
 		int res = -1;
 		int sum = 0;
@@ -22,14 +22,11 @@ public:
 			sum += nums[i];
 
 			if (map.find(sum - target) != map.end()) {
-                //cout << i << "s" << sum << "t" << map[sum-target] << endl;
 				res = max(res, i - map[sum - target]);
-                cout<<"res"<<res<<endl;
 			}
 
 			map[sum] = i;
 		}
-              //cout<<res<<endl;
 		return res != -1 ? nums.size() - res : res;
 	}
 }; 
