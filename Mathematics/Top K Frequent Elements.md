@@ -2,7 +2,11 @@
 
 https://leetcode.com/problems/top-k-frequent-elements/
 
+case 1:- [1,1,1,1] k = 1;
+map[1] = 4;
+but if it could have only nums.size() then buckets wont have 4 fourth index as indexing will be 0,1,2,3 only.....so to get that we need +1 here
 
+/*************************************************************************************************************************/
 class Solution {
 public:
 	vector<int> topKFrequent(vector<int>& nums, int k) {
