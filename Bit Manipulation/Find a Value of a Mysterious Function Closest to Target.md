@@ -2,6 +2,9 @@
 
 https://leetcode.com/problems/find-a-value-of-a-mysterious-function-closest-to-target/
 
+##   MUST CHECK
+https://leetcode.com/problems/find-a-value-of-a-mysterious-function-closest-to-target/discuss/959830/Four-Variables-%2B-O(N)-or-Basic-Concepts-or-C%2B%2B
+
 
 class Solution {
 public:
@@ -30,5 +33,42 @@ public:
 		}
 
 		return ans;
+	}
+};
+
+Approach 2:- No need of Prefix/Suffix Array.... Four variables will help us.
+Time Complexity - O(N)
+Space Complexity - O(1)
+class Solution {
+public:
+	int closestToTarget(vector<int>& arr, int target) {
+		int n = arr.size();
+		int finalAns = INT_MAX;
+
+		int SuffixCurrent = 0;
+		int suffixAhead = 0;
+
+		suffixAhead = arr[n - 1];
+		finalAns = min(finalAns, abs(suffixAhead - target));
+
+		for (int i = n - 2; i >= 0; i--) {
+			SuffixCurrent = arr[i] & suffixAhead;
+			finalAns = min(finalAns, min(abs(SuffixCurrent - target), abs(arr[i] - target)));
+			suffixAhead = SuffixCurrent;
+		}
+
+		int prefixCurrent = 0;
+		int prefixPrevious = 0;
+
+		prefixPrevious = arr[0];
+		finalAns = min(finalAns, abs(prefixPrevious - target));
+		
+		for (int i = 1; i < n; i++) {
+			prefixCurrent = arr[i]  & prefixPrevious;
+			finalAns = min(finalAns, abs(prefixCurrent - target));
+			prefixPrevious = prefixCurrent;
+		}
+
+		return finalAns;
 	}
 };
