@@ -1,3 +1,4 @@
+``` cpp
 #include  <bits/stdc++.h>
 #define MAX 1000
 #define mod     1000000009
