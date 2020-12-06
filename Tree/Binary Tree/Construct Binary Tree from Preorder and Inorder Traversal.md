@@ -4,6 +4,9 @@ https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-tr
 
 https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/discuss/960995/Straight-Forward-or-Maths-Only-or-Intuitive
 
+//    ---------------------------------------------MUST CHECK------------------------------------------------------------
+https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/discuss/34555/The-iterative-solution-is-easier-than-you-think!/117721
+
 class Solution {
 private:
 	TreeNode* buildTreeHelp(vector<int>& preorder, vector<int>& inorder, int inS, int inE, int preS, int preE) {
