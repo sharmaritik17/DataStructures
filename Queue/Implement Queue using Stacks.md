@@ -1,3 +1,4 @@
+``` cpp
 https://leetcode.com/problems/implement-queue-using-stacks/
 
 /*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/amortized complexity would be O(1)-- TC/SC
