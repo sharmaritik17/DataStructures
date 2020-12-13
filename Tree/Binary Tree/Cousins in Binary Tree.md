@@ -1,5 +1,7 @@
 ``` cpp
    https://leetcode.com/problems/cousins-in-binary-tree/
+   
+   https://leetcode.com/problems/cousins-in-binary-tree/discuss/970684/DP-on-Trees-or-Encapsulation-or-Interview-Tips
 
 #define data val
 class Solution {
