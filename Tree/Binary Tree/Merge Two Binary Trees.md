@@ -21,8 +21,8 @@ public:
 			getPair top = pendingNodes.top();
 			pendingNodes.pop();
 
-			TreeNode *first = pendingNodes.f;
-			TreeNode *second = pendingNodes.s;
+			TreeNode *first = top.f;
+			TreeNode *second = top.s;
 
 			if (!second) {
 				continue;
