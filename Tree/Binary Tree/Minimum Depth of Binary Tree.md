@@ -32,7 +32,7 @@ public:
 
 			int size = pendingNodes.size();
 			for (int i = 0; i < size; i++) {
-            TreeNode *front = pendingNodes.front();
+                         TreeNode *front = pendingNodes.front();
 				if (front->left) {
 					pendingNodes.push(front->left);
 				}
