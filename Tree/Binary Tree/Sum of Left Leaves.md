@@ -1,6 +1,8 @@
 
 https://leetcode.com/problems/sum-of-left-leaves/
 
+``` cpp
+
 #define data val
 class Solution {
 public:
