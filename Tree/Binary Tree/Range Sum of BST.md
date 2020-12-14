@@ -7,13 +7,6 @@ https://leetcode.com/problems/range-sum-of-bst/
 #define data val
 class Solution {
 public:
-    int rangeSumBST(TreeNode* root, int L, int R) {
-        
-    }
-};
-#define data val
-class Solution {
-public:
 	int rangeSumBST(TreeNode* root, int L, int R) {
 		if (!root)
 			return 0;
@@ -34,7 +27,6 @@ public:
 	}
 };
 
-// iterative
 #define data val
 #include<stack>
 class Solution {
@@ -46,20 +38,20 @@ public:
 		int sum = 0;
 		stack<TreeNode*> pendingNodes;
 		pendingNodes.push(root);
-		while(pendingNodes.size()){
+		while (pendingNodes.size()) {
 			TreeNode *top = pendingNodes.top();
 			pendingNodes.pop();
-            
-			if(!top)
+
+			if (!top)
 				continue;
-            
-		   if(top->data>=L && top->data<=R){
+
+			if (top->data >= L && top->data <= R) {
 				sum += top->data;
 			}
-		     if(top->data>L){
+			if (top->data > L) {
 				pendingNodes.push(top->left);
 			}
-			 if(top->data<R){
+			if (top->data < R) {
 				pendingNodes.push(top->right);
 			}
 		}
