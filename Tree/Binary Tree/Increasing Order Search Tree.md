@@ -2,6 +2,32 @@
 
 https://leetcode.com/problems/increasing-order-search-tree/ 
 
+//recursive
+class Solution {
+	void increasingBSTHelper(TreeNode *root, TreeNode *&curr) {
+		if (!root)
+			return;
+
+		increasingBSTHelper(root->left, curr);
+		root->left = NULL;
+		curr->right = root;
+		curr = root;
+		increasingBSTHelper(root->right, curr);
+	}
+public:
+	TreeNode* increasingBST(TreeNode* root) {
+		if (!root)
+			return root;
+
+		TreeNode *dummy = new TreeNode(0);
+		TreeNode *curr = dummy;
+		increasingBSTHelper(root, curr);
+		return dummy->right;
+	}
+};
+
+
+//iterative
 class Solution {
 public:
 	TreeNode* increasingBST(TreeNode* root) {
