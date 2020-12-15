@@ -1,3 +1,4 @@
+''' cpp
 int depth(BinaryTreeNode<int> *root, int node) {
 	if (root == NULL)
 		return -1;
