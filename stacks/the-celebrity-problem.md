@@ -1,3 +1,4 @@
+``` cpp
 problem----- shorturl.at/eoz15
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 https://www.geeksforgeeks.org/the-celebrity-problem/
