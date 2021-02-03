@@ -29,3 +29,47 @@ Node *reverseLinkedList(Node *head) {
     // Write your code here
     reverseLinkedList_helper(head).head;
 }
+
+
+
+Node *reverseLinkedListRec(Node *head) {
+    // Write your code here
+    if(!head || !head->next){
+        return head;
+    }
+
+
+    Node *smallAns = reverseLinkedListRec(head->next);
+
+    head->next->next = head;
+    head->next = NULL;
+    
+    /*
+    Node *tail = head->next;
+    tail->next = head;
+    
+    head->next = NULL;
+    */
+
+    return smallAns;
+}
+
+
+
+Node *reverseLinkedList(Node *head) {
+    // Write your code here
+    if(!head)
+        return head;
+    
+    Node *curr = head;
+    Node *prev = NULL;
+    Node *nextNode = NULL;
+    
+    while(curr){
+        nextNode = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = nextNode;
+    }
+    return prev;
+}
