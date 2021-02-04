@@ -1,3 +1,4 @@
+``` cpp
 /*-----------------------------------------------------------------------*/ leads to same/below solution 
 Node* reverseKGroup(Node* head, int k) {
 	if (!head || !k)
