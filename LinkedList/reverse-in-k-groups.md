@@ -1,4 +1,36 @@
 ``` cpp
+#define nul     NULL
+class Solution {
+    int length(ListNode *head) {
+        if (!head)
+            return 0;
+
+        return 1 + length(head->next);
+    }
+public:
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        if (k == 0 || k == 1 || length(head) < k || !head) {
+            return head;
+        }
+
+        int count = 0;
+        ListNode *curr = head, *prev = nul;
+        while (curr && count < k) {
+            ListNode *nextNode = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = nextNode;
+            count++;
+        }
+
+        if (curr) {
+            head->next = reverseKGroup(curr, k);
+        }
+
+        return prev;
+    }
+};
+
 /*-----------------------------------------------------------------------*/ leads to same/below solution 
 Node* reverseKGroup(Node* head, int k) {
 	if (!head || !k)
