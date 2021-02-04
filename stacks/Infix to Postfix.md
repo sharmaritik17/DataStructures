@@ -1,7 +1,7 @@
-shorturl.at/eyW59
-/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
 
 
+
+```cpp
 #include <iostream>
 #include<bits/stdc++.h> 
 #include<stack>
