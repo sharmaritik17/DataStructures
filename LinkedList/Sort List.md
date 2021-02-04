@@ -2,6 +2,7 @@
 
 https://leetcode.com/problems/sort-list/
 
+TC --  O(nlogn) Sc -- O(1)
 #define data val
 #define j NULL
 class Solution {
