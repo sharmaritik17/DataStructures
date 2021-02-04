@@ -1,3 +1,4 @@
+``` cpp
 #include <iostream>
 #include <bits/stdc++.h>
 #include<stack>
