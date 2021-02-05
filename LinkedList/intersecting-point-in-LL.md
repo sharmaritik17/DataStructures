@@ -1,23 +1,21 @@
 ``` cpp
-
+https://leetcode.com/problems/intersection-of-two-linked-lists/
 // intersecting point in LL
 /*-----------------------------------------------------------------------*/
 class Solution {
 public:
-	ListNode *getIntersectionNode(ListNode *head1, ListNode *head2) {
-		if (!head1 || !head2)
-			return !head1;
+    ListNode *getIntersectionNode(ListNode *p1, ListNode *p2) {
+        if (!p1 || !p2)
+            return {};
 
-		ListNode a = head1->next;
-		ListNode b = head2->next;
+        ListNode *a = p1, *b = p2;
 
-		while (a != b) {
-			a = a == nul ? head2 : a->next;
-			b = b == nul ? head1 : b->next;
-		}
-
-		return a; // or b both r same
-	}
+        while (a != b) {
+            a = a ? a->next : p2 ;
+            b = b ? b->next : p1 ;
+        }
+        return a;
+    }
 };
 
 
