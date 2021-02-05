@@ -41,3 +41,28 @@ void rearrange(struct Node *head)
 	odd->next = evenHead;
 
 }
+
+
+
+
+LEETCODE PROBLEM --- SOLUTION
+
+class Solution {
+public:
+    ListNode* oddEvenList(ListNode* head) {
+        if (!head || !head->next)
+            return head;
+
+        ListNode *odd = head, *even = head->next , *evenHead = even;
+
+        while (even && even->next) {
+            odd->next = odd->next->next;
+            even->next = even->next->next;    // THIS WILL PUT AUTOMATICALLY NULL(WHEN LENGTH OF LL IS ODD)
+            odd = odd->next;
+            even = even->next;
+        }
+        odd->next = evenHead;
+
+        return head;
+    }
+};
