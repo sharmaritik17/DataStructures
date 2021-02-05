@@ -1,3 +1,4 @@
+``` cpp
 // add polynomials
 Node* addPolynomial(Node *p1, Node *p2)
 {
