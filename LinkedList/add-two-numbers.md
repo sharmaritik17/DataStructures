@@ -42,3 +42,39 @@ public:
 		return newhead;
 	}
 };
+
+
+#define data val
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        if (!l1)
+            return l2;
+        if (!l2)
+            return l1;
+
+        int carry = 0;
+        ListNode *orgHead = NULL, *tail = NULL;
+        while (l1 || l2 || carry) {
+            if (l1) {
+                carry += l1->data;
+                l1 = l1->next;
+            }
+            if (l2) {
+                carry += l2->data;
+                l2 = l2->next;
+            }
+            ListNode *newNode = new ListNode(carry % 10);
+            if (!orgHead) {
+                orgHead = newNode;
+                tail = newNode;
+            }
+            else {
+                tail->next = newNode;
+                tail = newNode;
+            }
+            carry /= 10;
+        }
+        return orgHead;
+    }
+};
