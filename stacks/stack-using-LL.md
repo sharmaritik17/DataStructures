@@ -1,4 +1,5 @@
-// stack by using linked list
+ ``` cpp
+ // stack by using linked list
 template<typename T>
 class Node {
 public:
