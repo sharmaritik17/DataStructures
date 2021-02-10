@@ -1,3 +1,5 @@
+
+``` cpp
 //stack by using array
 template<typename T>
 //stack implementation using array
