@@ -35,4 +35,4 @@ public:
 
 approach 2:-
 by using KMP ----- IMPORTANT 
-https://leetcode.com/problems/linked-list-in-binary-tree/
+https://leetcode.com/problems/linked-list-in-binary-tree/discuss/535370/Java-KMP-Search-O(m%2Bn)-Clean-code
