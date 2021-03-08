@@ -1,6 +1,6 @@
 ``` cpp
 add two numbers   
-https://practice.geeksforgeeks.org/problems/add-two-numbers-represented-by-linked-lists/1
+https://leetcode.com/problems/add-two-numbers/
 /* ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 #define nul     NULL
 class Solution {
