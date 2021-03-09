@@ -1,9 +1,9 @@
 https://leetcode.com/problems/min-stack/
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-best solution here---------------------------------------------- https://leetcode.com/problems/min-stack/discuss/904680/Without-stack-In-O(1)-both-timespace-complexity-cpp
-/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+best solution here- https://leetcode.com/problems/min-stack/discuss/904680/Without-stack-In-O(1)-both-timespace-complexity-cpp
 
+``` cpp
 
 class MinStack {
 public:
