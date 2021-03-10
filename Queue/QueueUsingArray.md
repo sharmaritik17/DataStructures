@@ -58,6 +58,7 @@ public:
             }
             delete[] data;
             data = new_data;
+	    nextIndex = capacity;
             capacity = 2 * capacity;
             frontIndex = 0;
 /*$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/
