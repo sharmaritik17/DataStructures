@@ -1,6 +1,7 @@
 https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/
 ``` cpp
 my solution----- /*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+```
  https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/discuss/902741/Unique-approach-easy-buzzy-faster-than-98.87-online-submissions
 ``` cpp
 /*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
