@@ -1,13 +1,18 @@
+``` cpp
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/-------------------------------------SAME QUESTION
+```
 https://leetcode.com/problems/remove-duplicate-letters/
 
-
+``` cpp
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/----------------------------------------------------SAME QUESTION
+```
 https://leetcode.com/problems/smallest-subsequence-of-distinct-characters/ 
-
+``` cpp
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/----------------------------------------------------------------------MY SOLUTION
+```
 https://leetcode.com/problems/remove-duplicate-letters/discuss/906973/C%2B%2B-Simple-with-comments-0-ms-faster-than-100.00-easy-buzzy
 
+``` cpp
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 class Solution {
 public:
