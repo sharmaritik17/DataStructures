@@ -1,3 +1,4 @@
+https://leetcode.com/problems/remove-outermost-parentheses/
 ``` cpp
 When we meet outermost '(', the count will be 0, so we post increment the count to ignore that '('.
 When we meet outermost ')', the count will be 1, so we pre decrement the count to ignore that ')'.
