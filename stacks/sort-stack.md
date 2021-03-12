@@ -1,7 +1,7 @@
-shorturl.at/LY246
+
 /*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/ using recursion only
 
-
+``` cpp
 void sort_helper(stack<int> &s,int data) {
 	if (!s.size() || s.top() <= data) {
 		s.push(data);
