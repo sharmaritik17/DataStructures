@@ -1,6 +1,8 @@
 https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/
-/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
-my solution----- https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/discuss/902741/Unique-approach-easy-buzzy-faster-than-98.87-online-submissions
+``` cpp
+my solution----- /*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+ https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/discuss/902741/Unique-approach-easy-buzzy-faster-than-98.87-online-submissions
+``` cpp
 /*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
 class Solution {
 public:
