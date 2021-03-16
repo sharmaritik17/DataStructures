@@ -25,3 +25,32 @@ public:
         return res;
     }
 };
+
+
+#define data val
+class Solution {
+public:
+  vector<int> nextLargerNodes(ListNode* head) {
+    vector<int> res;
+    stack<int> stack;  // save indexes
+
+    for (int i = 0; head; head = head->next) {
+
+      while (stack.size() && res[stack.top()] < head->data) {
+        res[stack.top()] = head->data;
+        stack.pop();
+      }
+
+      stack.push(i++);
+
+      res.push_back(head->data);
+    }
+
+    while (stack.size()) {
+      res[stack.top()] = 0;
+      stack.pop();
+    }
+
+    return res;
+  }
+};
