@@ -1,5 +1,6 @@
 https://leetcode.com/problems/flatten-nested-list-iterator/
 
+https://leetcode.com/problems/flatten-nested-list-iterator/discuss/80146/Real-iterator-in-Python-Java-C%2B%2B
 
 https://leetcode.com/problems/flatten-nested-list-iterator/discuss/80234/evolve-from-intuition-to-optimal-a-review-of-top-solutions
 
@@ -42,11 +43,6 @@ public:
 private:
     stack<vector<NestedInteger>::iterator> begins, ends;
 };
-
-
-
-
-
 
 
 class NestedIterator {
