@@ -1,5 +1,6 @@
 https://leetcode.com/problems/html-entity-parser/
 
+https://leetcode.com/problems/html-entity-parser/discuss/1116016/Trie-or-C%2B%2B-or-Without-Map
 
 https://leetcode.com/problems/html-entity-parser/discuss/575416/C%2B%2B-two-pointers-O(n)-or-O(1)
 ``` cpp
