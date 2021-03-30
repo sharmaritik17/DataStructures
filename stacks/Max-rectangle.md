@@ -1,4 +1,5 @@
 https://leetcode.com/problems/maximal-rectangle/
+``` cpp
 ------------------------------------------------------------------------------
 class Solution {
 public:
