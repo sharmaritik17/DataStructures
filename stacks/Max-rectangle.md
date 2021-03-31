@@ -1,4 +1,6 @@
 https://leetcode.com/problems/maximal-rectangle/
+
+https://leetcode.com/problems/maximal-rectangle/discuss/29172/my-on3-solution-for-your-reference
 ``` cpp
 ------------------------------------------------------------------------------
 class Solution {
