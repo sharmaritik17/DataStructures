@@ -85,6 +85,7 @@ https://leetcode.com/problems/largest-rectangle-in-histogram/
 
 
 /*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/ monotonically stack
+// take example 2 3 4 5 for better understanding
 class Solution {
 public:
     int largestRectangleArea(vector<int>& heights) {
@@ -100,7 +101,7 @@ public:
         heights.push_back(0);
 
 
-        for (int i = 0; i < heights.size();; i++) {
+        for (int i = 0; i < heights.size(); i++) {
 
             while (!st.empty() && heights[st.top()] > heights[i]) {
                 int top_element = heights[st.top()];
@@ -108,7 +109,7 @@ public:
 
                 // take an example with code since it's zero based indexing
                 int ran = st.empty() ? -1 : st.top(); // in case we reached at the end of histogram
-                int width = i - ran - 1;
+                int width = i - ran - 1; //-1 bcs we want to skip current(i) index cnadidiate
                 max_area = max(max_area, (top_element * width));
             }
 
