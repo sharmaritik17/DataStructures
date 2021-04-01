@@ -3,7 +3,7 @@ https://leetcode.com/problems/design-circular-queue/
 
 https://leetcode.com/problems/design-circular-queue/discuss/1137859/Unique-approach-Straight-forward-90-faster-Easy-buzzy
 
-``` 
+```  cpp
 class MyCircularQueue {
     int *data;
     int frontIndex;
