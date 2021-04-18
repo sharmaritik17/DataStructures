@@ -1,5 +1,7 @@
 https://leetcode.com/problems/deepest-leaves-sum/
 
+https://leetcode.com/problems/deepest-leaves-sum/discuss/1164807/O(1)-space-O(n)-time-Morris-traversal
+
 ``` cpp
 
 #define data val
