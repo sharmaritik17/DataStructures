@@ -1,5 +1,6 @@
 https://practice.geeksforgeeks.org/problems/maximum-index3307/1
-/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+``` cpp
 #include<stack>
 class Solution{
 public:
