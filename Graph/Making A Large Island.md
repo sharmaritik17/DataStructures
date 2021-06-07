@@ -1,6 +1,5 @@
 https://leetcode.com/problems/making-a-large-island/
-```
-cpp
+``` cpp
 class Solution {
 	int paintAdjLand(vector<vector<int>>& grid,int i,int j,int color,vector<int> &directions){
 		if(i<0 || j<0 || i>=grid.size() || j>=grid[0].size() || grid[i][j]!=1) return 0;
